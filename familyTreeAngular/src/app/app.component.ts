@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { SharedService } from './shared/sharedService.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
-  title = 'familyTreeAngular';
+
+  backgroundImage: string = '';
+
+  constructor(private _sharedService: SharedService) {
+    this._sharedService.backGroundImage$.subscribe(imageUrl => this.backgroundImage = imageUrl);
+  }
 }

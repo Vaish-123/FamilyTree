@@ -1,0 +1,48 @@
+.profileClass {
+  // height: 500px;
+
+  .profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 7rem;
+  }
+
+  .profile-content {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for a professional look */
+  }
+
+  /* Profile picture styling */
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Circular profile picture */
+    margin-right: 25px; /* Space between picture and details */
+    object-fit: cover; /* Ensures the image fits within the circular frame */
+    border: 2px solid #ddd; /* Optional border */
+  }
+
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .profile-name {
+    font-size: 1.5em;
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .profile-info {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,52 @@
+<!-- <div class="family-tree">
+  <div class="level">
+    <div class="object-div">
+      <div class="horizontal-container">
+        <div class="horizontal-line"></div>
+        <div class="horizontal-line"></div>
+      </div>
+      <div class="vertical-line"></div>
+      <div class="card-container">
+        <div class="card">
+          <img src="path/to/image.jpg" alt="User Name" />
+          <div class="card-body">
+            <h5 class="card-title">User Name</h5>
+            <p class="card-text">Year</p>
+            <p class="card-relation">Relation Type</p>
+          </div>
+        </div>
+      </div>
+      <div class="horizontal-line-right"></div>
+      <div class="vertical-line-bottom"></div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="family-tree">
+  <ng-container *ngFor="let level of uniqueLevels">
+    <div class="level">
+      <ng-container *ngFor="let member of getMembersByLevel(level);index as i">
+        <div class="object-div">
+          <div class="horizontal-container" *ngIf="level!=1">
+            <div class="horizontal-lineLeft"></div>
+            <div class="horizontal-lineRight"></div>
+          </div>
+          <div class="vertical-line"></div>
+          <div class="card-container">
+            <div class="card">
+              <img [src]="member.photoUrl" alt="{{ member.userName }}" />
+              <div class="card-body">
+                <h5 class="card-title">{{ member.userName }}</h5>
+                <p class="card-text">{{ member.year }}</p>
+                <p class="card-relation">{{ member.relationType }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="horizontal-line-right" *ngIf="member.relationType=='Spouse'&&i != 0"></div>
+          <div class="vertical-line-bottom"></div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
