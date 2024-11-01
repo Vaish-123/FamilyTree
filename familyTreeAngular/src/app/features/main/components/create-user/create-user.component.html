@@ -1,1 +1,39 @@
-<p>create-user works!</p>
+<div class="createUserclass p-5">
+  <div class="card text-white bg-secondary">
+    <div class="card-header">
+      Create User
+    </div>
+    <div class="card-body">
+      <form>
+        <fieldset [formGroup]="CreateUserForm">
+          <div class="mb-3">
+            <div class="mb-3">
+              <label for="firstName" class="form-label">firstName</label>
+              <input type="text" formControlName="firstName" class="form-control" id="firstName" name="firstName">
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">lastName</label>
+              <input type="text" formControlName="lastName" class="form-control" id="lastName">
+            </div>
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text text-white"><small>We'll never share your email with anyone
+                else.</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="card-footer text-muted d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary" (click)="submitForm()">Submit</button>
+    </div>
+  </div>
+</div>

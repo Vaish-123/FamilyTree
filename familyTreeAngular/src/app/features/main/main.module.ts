@@ -5,6 +5,7 @@ import { UserProfileComponent } from "./components/user-profile/user-profile.com
 import { SharedModule } from "../../shared/shared.module";
 import { PrimaryRelationsComponent } from "./components/primary-relations/primary-relations.component";
 import { CreateUserComponent } from "./components/create-user/create-user.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { CreateUserComponent } from "./components/create-user/create-user.compon
     PrimaryRelationsComponent,
     CreateUserComponent
   ],
-  imports: [MainRoutingModule, SharedModule],
+  imports: [MainRoutingModule, SharedModule, ReactiveFormsModule],
   exports: []
 })
 
