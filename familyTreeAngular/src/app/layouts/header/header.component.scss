@@ -1,0 +1,10 @@
+.headerClass {
+  nav {
+    height: 5rem;
+    background-color: rgb(43 48 53 / 45%) !important; /* Semi-transparent background */
+    position: relative !important; /* Positioning to stack properly */
+    z-index: 2 !important;
+    color: white !important;
+    border-bottom: 1px solid rgb(88, 87, 87) !important;
+  }
+}

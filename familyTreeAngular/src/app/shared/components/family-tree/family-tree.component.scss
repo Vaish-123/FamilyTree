@@ -1,0 +1,173 @@
+// .family-tree {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+
+//   .level {
+//     display: flex;
+//     justify-content: center;
+//     margin: 20px 0; /* Space between levels */
+
+//     .object-div {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       position: relative; /* For positioning lines */
+//       width: 120px; /* Fixed width to maintain alignment */
+
+//       /* First Div: Horizontal Lines */
+//       .horizontal-container {
+//         display: flex;
+//         justify-content: space-between;
+//         width: 100%; /* Full width */
+//         margin-bottom: 10px; /* Space between horizontal line and card */
+
+//         .horizontal-line {
+//           flex: 1; /* Grow to fill space */
+//           height: 2px;
+//           background-color: black; /* Line color */
+//         }
+//       }
+
+//       /* Second Div: Vertical Line (Top) */
+//       .vertical-line {
+//         position: absolute;
+//         transform: translateX(-50%);
+//         height: 15px;
+//         width: 2px;
+//         background-color: black; /* Line color */
+//         top: 0; /* Start from the top */
+//       }
+
+//       /* Third Div: Card */
+//       .card-container {
+//         position: relative; /* For vertical lines */
+//         .card {
+//           width: 100%; /* Full width of the object */
+//           text-align: center;
+
+//           img {
+//             width: 100%;
+//             height: auto; /* Maintain aspect ratio */
+//             border-radius: 50%; /* Make it circular */
+//           }
+
+//           .card-body {
+//             padding: 10px; /* Space within the card */
+//           }
+//         }
+//       }
+
+//       /* New Horizontal Line on the right */
+//       .horizontal-line-right {
+//         position: absolute;
+//         height: 2px; /* Line height */
+//         background-color: black; /* Line color */
+//         width: 10px; /* Width of the line */
+//         left: 100%; /* Start from the right edge of the card */
+//         top: 50%; /* Align it vertically in the middle */
+//         transform: translateY(-50%); /* Center it vertically */
+//       }
+
+
+//       /* Fourth Div: Vertical Line (Bottom) */
+//       .vertical-line-bottom {
+//         transform: translateX(-50%);
+//         height: 15px; /* Fixed height for the bottom line */
+//         width: 2px;
+//         background-color: black; /* Line color */
+//       }
+//     }
+//   }
+// }
+
+
+.family-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align levels */
+
+  .level {
+    display: flex;
+    justify-content: center;
+    // margin: 20px 0; /* Space between levels */
+
+    .object-div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative; /* For positioning lines */
+      width: 120px; /* Fixed width to maintain alignment */
+      margin-right: 20px;
+
+      /* First Div: Horizontal Lines */
+      .horizontal-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%; /* Full width */
+        margin-bottom: 10px; /* Space between horizontal line and card */
+
+        .horizontal-lineLeft{
+          flex: 1; /* Grow to fill space */
+          height: 2px;
+          background-color: black; /* Line color */
+        }
+        .horizontal-lineRight{
+          flex: 1; /* Grow to fill space */
+          margin-right: -20px;
+          height: 2px;
+          background-color: black; /* Line color */
+        }
+      }
+
+      /* Second Div: Vertical Line (Top) */
+      .vertical-line {
+        position: absolute;
+        transform: translateX(-50%);
+        height: 15px;
+        width: 2px;
+        background-color: black; /* Line color */
+        top: 0; /* Start from the top */
+      }
+
+      /* Third Div: Card */
+      .card-container {
+        position: relative; /* For vertical lines */
+        .card {
+          width: 100%; /* Full width of the object */
+          text-align: center;
+
+          img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 50%; /* Make it circular */
+          }
+
+          .card-body {
+            padding: 10px; /* Space within the card */
+          }
+        }
+      }
+
+      /* New Horizontal Line on the right */
+      .horizontal-line-right {
+        position: absolute;
+        height: 2px; /* Line height */
+        background-color: black; /* Line color */
+        width: 20px; /* Width of the line */
+        right: 100%; /* Start from the right edge of the card */
+        top: 50%; /* Align it vertically in the middle */
+        transform: translateY(-50%); /* Center it vertically */
+      }
+
+      /* Fourth Div: Vertical Line (Bottom) */
+      .vertical-line-bottom {
+        transform: translateX(-50%);
+        height: 15px; /* Fixed height for the bottom line */
+        width: 2px;
+        background-color: black; /* Line color */
+      }
+    }
+  }
+}
+

@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { SharedService } from './shared/sharedService.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
-  title = 'familyTreeAngular';
+
+  backgroundImage: string = '';
+
+  constructor(private _sharedService: SharedService) {
+    this._sharedService.backGroundImage$.subscribe(imageUrl => this.backgroundImage = imageUrl);
+  }
 }

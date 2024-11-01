@@ -1,0 +1,8 @@
+.appClass{
+  position: relative; /* Needed for absolute positioning of child elements */
+  background-size: cover; /* Cover the entire area */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center; /* Center the image */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  overflow: hidden; /* Optional: Hide scrollbars if necessary */
+}
