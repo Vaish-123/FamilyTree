@@ -1,0 +1,98 @@
+<div class="tableComponentClass">
+  <form class="mt-5" [ngClass]="{'darkmodeStyles': darkMode}">
+    <div class="table-actions mt-3 row align-items-center">
+      <div class="col-auto">
+        <div class="input-group">
+          <input id="table-search" type="text" class="form-control" [ngClass]="{'darkmodeStyles': darkMode}"
+            [(ngModel)]="searchTerm" (input)="onSearch()" [ngModelOptions]="{standalone: true}" placeholder="Search..."
+            [readonly]="data.length == 0" />
+          <span class="input-group-text" [ngClass]="{'darkmodeStyles': darkMode}" (click)="onSearch()">
+            <i class="bi bi-search"></i>
+          </span>
+        </div>
+      </div>
+      <div class="col-auto">
+        <button (click)="exportToCSV()" class="btn btn-outline-primary" [disabled]="data.length == 0">Export to
+          CSV</button>
+      </div>
+
+      <!-- Column Chooser Dropdown -->
+      <div class="col-auto">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="columnChooserDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false" [style.background-color]="darkMode?'':'white'"
+            [style.color]="darkMode?'white':'black'">
+            Columns
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="columnChooserDropdown"
+            [ngClass]="{'darkmodeStyles': darkMode,'whiteBorder':darkMode}">
+            <li *ngFor="let col of columns" class="dropdown-item" [ngClass]="{'darkmodeStyles': darkMode}">
+              <input type="checkbox" class="form-check-input me-2" [checked]="visibleColumns[col.key]"
+                (change)="toggleColumnVisibility(col.key)">
+              <label class="form-check-label">{{ col.label }}</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dark Mode Toggle Button -->
+      <div class="col-auto ms-auto">
+        <button class="btn btn-outline-dark" [ngClass]="darkMode?'darkmodeButton':''" (click)="toggleDarkMode()">
+          <i class="bi" [ngClass]="darkMode ? 'bi-sun' : 'bi-moon'"></i> Toggle Dark Mode
+        </button>
+      </div>
+
+      <!-- Table Bordered Toggle Button -->
+      <div class="col-auto">
+        <button class="btn btn-outline-info" (click)="toggleTableBorder()">
+          <i class="bi" [ngClass]="bordered ? 'bi-border-all' : 'bi-border'"></i> Toggle Borders
+        </button>
+      </div>
+
+    </div>
+
+    <table class="table table-hover" [ngClass]="{'table-dark': darkMode,'table-bordered': bordered}">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 50px;">#</th>
+          <!-- Set width and wrapping for header cells -->
+          <ng-container *ngFor="let col of columns">
+            <th *ngIf="visibleColumns[col.key]" scope="col" [sortable]="col.key" (sort)="onSort($event)"
+              [style.width]="col.width" class="cell-wrap">
+              {{ col.label }}
+            </th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of filteredData$ | async; let i = index">
+          <th scope="row" style="width: 50px;">{{ i + 1 + (page - 1) * pageSize }}</th>
+          <!-- Set width and wrapping for body cells -->
+          <ng-container *ngFor="let col of columns">
+            <td *ngIf="visibleColumns[col.key]" [style.width]="col.width" class="cell-wrap">
+              {{ row[col.key] }}
+            </td>
+          </ng-container>
+        </tr>
+        <tr *ngIf="(filteredData$ | async)?.length === 0">
+          <td [attr.colspan]="columns.length + 1" class="table-empty-state">No data available</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="table-footer">
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="data.length" [(page)]="page" [pageSize]="pageSize"
+          (pageChange)="onPageChange($event)">
+        </ngb-pagination>
+
+        <select [disabled]="data.length == 0" class="form-select" [ngClass]="{'darkmodeStyles': darkMode}"
+          [(ngModel)]="pageSize" (change)="filterData()" [ngModelOptions]="{standalone: true}">
+          <option [ngValue]="5">5 items per page</option>
+          <option [ngValue]="10">10 items per page</option>
+          <option [ngValue]="15">15 items per page</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
