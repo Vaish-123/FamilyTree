@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../../../../shared/sharedService.service';
+import { Component, Injector, OnInit } from '@angular/core';
+import { AppComponentBase } from '../../../../shared/app-component-base';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,11 +7,12 @@ import { SharedService } from '../../../../shared/sharedService.service';
   styleUrl: './user-profile.component.scss'
 })
 
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent extends AppComponentBase implements OnInit {
 
-  constructor(private _sharedService: SharedService) {
-    this._sharedService.toggleHeaderVisibility(true);
-    this._sharedService.setBackgroundImage("url('/assets/images/background/pexels-sarimphotos-1033729.jpg')");
+  constructor(injector: Injector) {
+    super(injector);
+    this.sharedService.toggleHeaderVisibility(true);
+    this.sharedService.setBackgroundImage("url('/assets/images/background/pexels-sarimphotos-1033729.jpg')");
   }
 
   ngOnInit(): void {

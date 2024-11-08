@@ -1,5 +1,5 @@
 <div class="createUserclass p-5">
-  <div class="card text-white bg-secondary">
+  <div class="card">
     <div class="card-header">
       Create User
     </div>
@@ -7,27 +7,96 @@
       <form>
         <fieldset [formGroup]="CreateUserForm">
           <div class="mb-3">
-            <div class="mb-3">
-              <label for="firstName" class="form-label">firstName</label>
-              <input type="text" formControlName="firstName" class="form-control" id="firstName" name="firstName">
+            <div class="row mb-3">
+              <label class="form-label">Full Name<span class="text-danger"> *</span></label>
+              <div class="col">
+                <input type="text" formControlName="name" class="form-control" id="name" name="name"
+                  placeholder="Your first name">
+              </div>
+              <div class="col">
+                <input type="text" formControlName="surname" class="form-control" id="surname" name="surname"
+                  placeholder="Your middle + last name">
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="lastName" class="form-label">lastName</label>
-              <input type="text" formControlName="lastName" class="form-control" id="lastName">
+
+            <div class="col-auto mb-3">
+              <label for="userName" class="form-label" for="autoSizingInputGroup">Username<span class="text-danger">
+                  *</span></label>
+              <div class="input-group">
+                <div class="input-group-text">&#64;</div>
+                <input type="text" formControlName="userName" class="form-control" id="autoSizingInputGroup"
+                  placeholder="Username">
+              </div>
             </div>
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text text-white"><small>We'll never share your email with anyone
-                else.</small>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password<span class="text-danger"> *</span></label>
+              <input type="password" formControlName="password" class="form-control" id="password" name="password"
+                placeholder="Password">
+            </div>
+
+            <div class="mb-3">
+              <label for="emailAddress" class="form-label">Email address<span class="text-danger"> *</span></label>
+              <input type="email" formControlName="emailAddress" class="form-control" id="emailAddress"
+                name="emailAddress" aria-describedby="emailHelp" placeholder="Email address">
+              <div id="emailHelp" class="form-text"><small>We'll never share your email with anyone
+                  else.</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="phoneNumber" class="form-label">Phone Number</label>
+              <input type="tel" formControlName="phoneNumber" class="form-control" id="phoneNumber" name="phoneNumber">
+            </div>
+
+            <div class="mb-3">
+              <label for="dateOfBirth" class="form-label">Date of Birth</label>
+              <input type="datetime-local" [max]="maxDate" format formControlName="dateOfBirth" class="form-control"
+                id="dateOfBirth">
             </div>
           </div>
+
+          <div class="mb-3 row">
+            <div class="col-6">
+              <label for="gender" class="mb-2">Gender</label><br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="gender" id="inlineRadio1" value="male">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="gender" id="inlineRadio2" value="female">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="gender" class="mb-2">Relationship Status</label><br>
+              <div class="input-group">
+                <select class="form-select" formControlName="relationshipStatus" aria-label="Relationship Status">
+                  <option value="" selected>Relationship Status</option>
+                  <option value="single">Single</option>
+                  <option value="married">Married</option>
+                  <option value="divorced">Divorced</option>
+                </select>
+                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+              </div>
+            </div>
+          </div>
+
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="location" class="form-label">Location</label>
+            <textarea formControlName="location" class="form-control" rows="2" id="location" name="location"
+              placeholder="Location"></textarea>
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Bio</label>
+            <textarea formControlName="bio" class="form-control" rows="2" name="bio" id="bio"
+              placeholder="Brief about you"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Profile image</label>
+            <input class="form-control" type="file" id="formFile">
           </div>
         </fieldset>
       </form>
