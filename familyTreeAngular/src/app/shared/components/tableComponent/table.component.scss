@@ -1,0 +1,98 @@
+.tableComponentClass {
+
+  // Standalone Styles
+  .darkmodeStyles {
+    background-color: #212529;
+    color: white;
+
+    ::placeholder {
+      color: white;
+    }
+  }
+
+  .whiteBorder {
+    border: 1px solid white;
+  }
+
+  .darkmodeButton {
+    color: white;
+    border-color: white;
+  }
+
+  .darkmodeButton:hover {
+    background-color: white;
+    border-color: white;
+    color: black;
+  }
+
+  .darkmodeButton:hover i {
+    color: black;
+  }
+
+  form {
+    border: 1px solid blueviolet;
+    border-radius: 8px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .table-actions {
+      background-color: inherit;
+      margin: 0px;
+      padding: 5px;
+      border-radius: 8px;
+
+      .input-group-text {
+        cursor: pointer !important;
+      }
+    }
+
+    /* Basic table styling */
+    table {
+      width: 100%;
+      margin-top: 10px;
+      border-collapse: collapse;
+
+      th {
+        cursor: pointer;
+        position: relative;
+        text-align: left;
+      }
+
+      /* Styles for sort direction indicator */
+      /* Insert sorting indicator before the label */
+      th.asc::before,
+      th.desc::before {
+        content: '';
+        margin-right: 5px;
+        font-size: 0.9em;
+      }
+
+      th.asc::before {
+        content: '▲';
+      }
+
+      th.desc::before {
+        content: '▼';
+      }
+
+      /* Style for empty state */
+      .table-empty-state {
+        text-align: center;
+        font-style: italic;
+      }
+
+      .cell-wrap {
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+    }
+
+    .table-footer {
+      .form-select {
+        height: 38px;
+        width: 20%;
+      }
+    }
+  }
+}
