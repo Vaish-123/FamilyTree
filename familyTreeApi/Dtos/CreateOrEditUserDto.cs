@@ -1,23 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace familyTreeApi.Models
+namespace familyTreeApi.Dtos
 {
-    public class Users : FullAuditedEntity
+    public class CreateOrEditUserDto
     {
-        [Key]
         public long Id { get; set; }
 
         [Required]
-        public string UserName { get; set; } = string.Empty;
+        public string UserName { get; set; }
 
         [Required]
-        public string EmailAddress { get; set; } = string.Empty;
+        public string EmailAddress { get; set; }
 
         [Required]
-        public string Password { get; set; } = string.Empty;
+        public string Password { get; set; }
 
         [Required]
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
 
         public string? Surname { get; set; }
 
@@ -36,8 +35,5 @@ namespace familyTreeApi.Models
         public string? Bio { get; set; }
 
         public string? ImageUrl { get; set; }
-
-        public bool HasAdminAccess { get; set; } = false;
-
     }
 }

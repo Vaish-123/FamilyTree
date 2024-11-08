@@ -30,7 +30,7 @@ namespace familyTreeApi.Models
         /// <summary>
         /// Is this entity Deleted?
         /// </summary>
-        public virtual bool IsDeleted { get; set; }
+        public virtual bool IsDeleted { get; set; } = false;
 
         /// <summary>
         /// Which user deleted this entity?
