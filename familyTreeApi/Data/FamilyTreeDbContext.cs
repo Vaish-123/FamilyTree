@@ -16,8 +16,11 @@ namespace familyTreeApi.Data
             ///calls the base implementation of OnModelCreating in the parent class (usually DbContext or a custom base context).
             ///It's essential for inheriting any configuration defined in the parent class.
             base.OnModelCreating(modelBuilder);
-            
+
             //Data Seeding, FluentApi( use it for SQL Indexing)
+            modelBuilder.Entity<Users>().HasData(
+                new Users() { Id = 1, UserName = "admin", EmailAddress = "admin@gmail.com", Password = "Test@123", Name = "Admin", Status = "Active", HasAdminAccess = true }
+            );
         }
     }
 }
