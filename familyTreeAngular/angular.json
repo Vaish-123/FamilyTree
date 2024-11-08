@@ -34,7 +34,19 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-spinner/animations/ball-spin-fade.css",
+              "node_modules/ngx-spinner/animations/square-loader.css",
+              "node_modules/ngx-spinner/animations/pacman.css",
+              "node_modules/ngx-spinner/animations/ball-beat.css",
+              "node_modules/ngx-spinner/animations/cube-transition.css",
+              "node_modules/ngx-spinner/animations/timer.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
+              "node_modules/ngx-spinner/animations/ball-pulse-sync.css",
+              "node_modules/ngx-spinner/animations/ball-clip-rotate.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "node_modules/ngx-spinner/animations/ball-climbing-dot.css"
             ],
             "scripts": [
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
