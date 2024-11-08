@@ -5,4 +5,22 @@
   .card {
     width: 50%;
   }
+
+  .form-check-input {
+    border: 1px solid lightblue;
+  }
+
+  .form-control{
+    border: 1px solid lightblue !important;
+  }
+
+  ::placeholder {
+    font-size: small;
+  }
+
+  input.ng-touched.ng-invalid {
+    box-shadow: 0 0 5px 2px rgba(255, 0, 0, 0.5); /* Red shadow for emphasis */
+    border: 1px solid red;
+  }
+
 }

@@ -5,7 +5,9 @@ import { UserProfileComponent } from "./components/user-profile/user-profile.com
 import { SharedModule } from "../../shared/shared.module";
 import { PrimaryRelationsComponent } from "./components/primary-relations/primary-relations.component";
 import { CreateUserComponent } from "./components/create-user/create-user.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
+import { UtilsServiceComponent } from "../../shared/utils/utils.service";
 
 @NgModule({
   declarations: [
@@ -14,8 +16,15 @@ import { ReactiveFormsModule } from "@angular/forms";
     PrimaryRelationsComponent,
     CreateUserComponent
   ],
-  imports: [MainRoutingModule, SharedModule, ReactiveFormsModule],
-  exports: []
+  imports: [
+    MainRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    FormsModule
+  ],
+  providers: [UtilsServiceComponent],
+  exports: [],
 })
 
 export class MainModule { }
