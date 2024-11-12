@@ -1,11 +1,11 @@
-<div class="createUserclass p-5">
+<div class="createOrEditUserclass p-5">
   <div class="card">
     <div class="card-header">
-      Create User
+      <span>{{ UserForm.get('id').value ? 'Update' : 'Create' }}</span> User
     </div>
     <div class="card-body">
       <form>
-        <fieldset [formGroup]="CreateUserForm">
+        <fieldset [formGroup]="UserForm">
           <div class="mb-3">
             <div class="row mb-3">
               <label class="form-label">Full Name<span class="text-danger"> *</span></label>
@@ -102,7 +102,8 @@
       </form>
     </div>
     <div class="card-footer text-muted d-flex justify-content-center">
-      <button type="submit" class="btn btn-primary" (click)="submitForm()">Submit</button>
+      <button type="submit" class="btn btn-primary"
+        (click)="submitForm()">{{UserForm.get('id').value?'Update':'Submit'}}</button>
     </div>
   </div>
 </div>

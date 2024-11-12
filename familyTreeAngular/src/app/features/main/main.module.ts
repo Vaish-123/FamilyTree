@@ -4,19 +4,21 @@ import { MainRoutingModule } from "./main-routing.module";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 import { SharedModule } from "../../shared/shared.module";
 import { PrimaryRelationsComponent } from "./components/primary-relations/primary-relations.component";
-import { CreateUserComponent } from "./components/create-user/create-user.component";
+import { CreateOrEditUserComponent } from "./components/create-user/create-or-edit-user.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
 import { UtilsServiceComponent } from "../../shared/utils/utils.service";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
     HomeComponent,
     UserProfileComponent,
     PrimaryRelationsComponent,
-    CreateUserComponent
+    CreateOrEditUserComponent
   ],
   imports: [
+    CommonModule,
     MainRoutingModule,
     SharedModule,
     ReactiveFormsModule,

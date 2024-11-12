@@ -6,6 +6,8 @@ namespace familyTreeApi.Services.Interfaces
     {
         Task<List<UserDto>> GetAllUsers();
 
+        Task<UserDto?> GetUserbyId(long userId);
+
         Task<long> CreateOrEditUser(CreateOrEditUserDto user);
     }
 }

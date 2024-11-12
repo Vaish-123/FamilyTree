@@ -35,6 +35,16 @@ namespace familyTreeApi.Services
             return result;
         }
 
+        public async Task<UserDto?> GetUserbyId(long userId)
+        {
+            var user = await _dbContext.Users.FindAsync(userId);
+            if (user != null)
+            {
+                return _mapper.Map<UserDto>(user);
+            }
+            else return null;
+        }
+
         public async Task<long> CreateOrEditUser(CreateOrEditUserDto user)
         {
             try

@@ -1,15 +1,15 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../core/services/user.service';
 import { UserDto } from '../../../../core/models/userDto';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrl: './create-user.component.scss'
+  selector: 'app-create-or-edit-user',
+  templateUrl: './create-or-edit-user.component.html',
+  styleUrl: './create-or-edit-user.component.scss'
 })
-export class CreateUserComponent extends AppComponentBase {
+export class CreateOrEditUserComponent extends AppComponentBase implements OnInit {
 
   maxDate = new Date().toISOString().slice(0, 16);
 
@@ -19,10 +19,10 @@ export class CreateUserComponent extends AppComponentBase {
   ) {
     super(injector);
     this.sharedService.toggleHeaderVisibility(true);
-    this.sharedService.setBackgroundImage("url('/assets/images/background/pexels-pixabay-531880.jpg')");
+    this.sharedService.setBackgroundImage("url('assets/images/background/pexels-pixabay-531880.jpg')");
   }
 
-  CreateUserForm = new FormGroup({
+  UserForm = new FormGroup({
     id: new FormControl(0),
     userName: new FormControl('', Validators.required),
     emailAddress: new FormControl('', Validators.required),
@@ -39,11 +39,21 @@ export class CreateUserComponent extends AppComponentBase {
     imageUrl: new FormControl(''),
   });
 
+  ngOnInit(): void { }
+
+  editUser(userId: number) {
+    this.spinnerService.show();
+    this._userService.getUserById(userId).subscribe(result => {
+      this.UserForm.patchValue(result);
+      this.spinnerService.hide();
+    });
+  }
+
   submitForm() {
     this.spinnerService.show();
-    this.utilsServiceComponent.validateAllFields(this.CreateUserForm);
+    this.utilsServiceComponent.validateAllFields(this.UserForm);
 
-    if (this.CreateUserForm.invalid) {
+    if (this.UserForm.invalid) {
       this.spinnerService.hide();
       this.alertService.warn('Please Enter All Required Details', '', () => {
         this.utilsServiceComponent.scrollToTop();
@@ -52,15 +62,12 @@ export class CreateUserComponent extends AppComponentBase {
     }
 
     var _data: UserDto = new UserDto();
-    Object.assign(_data, this.CreateUserForm.value);
-    console.log(_data);
+    Object.assign(_data, this.UserForm.value);
     this._userService.createOrEditUser(_data).subscribe(result => {
-      console.log(result);
       this.spinnerService.hide();
       this.alertService.success('Saved Successfully');
     },
-      (err) => {
-        console.log(err);
+      () => {
         this.spinnerService.hide();
         this.alertService.error('Failed to Save');
       }

@@ -21,6 +21,12 @@ namespace familyTreeApi.Controllers
             return await _userAppService.GetAllUsers();
         }
 
+        [HttpPost("GetUserById")]
+        public async Task<UserDto?> GetUserById([FromBody] long userId)
+        {
+            return await _userAppService.GetUserbyId(userId);
+        }
+
         [HttpPost("CreateOrEditUser")]
         public async Task<IActionResult> CreateOrEditUser(CreateOrEditUserDto user)
         {

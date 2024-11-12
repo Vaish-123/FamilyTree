@@ -12,7 +12,7 @@ export class HomeComponent extends AppComponentBase implements OnInit {
   constructor(injector: Injector) {
     super(injector);
     this.sharedService.toggleHeaderVisibility(true);
-    this.sharedService.setBackgroundImage("url('/assets/images/background/pexels-eberhardgross-1624496.jpg')");
+    this.sharedService.setBackgroundImage("url('assets/images/background/pexels-eberhardgross-1624496.jpg')");
   }
 
   ngOnInit(): void {
