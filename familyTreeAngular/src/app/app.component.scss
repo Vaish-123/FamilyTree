@@ -1,8 +1,26 @@
-.appClass{
-  position: relative; /* Needed for absolute positioning of child elements */
-  background-size: cover; /* Cover the entire area */
-  background-repeat: no-repeat; /* Prevent image repetition */
-  background-position: center; /* Center the image */
-  min-height: 100vh; /* Ensure it covers the full viewport height */
-  overflow: hidden; /* Optional: Hide scrollbars if necessary */
+.appClass {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  overflow: hidden;
+
+  // Overlay styling
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 25, 25, 0.3);
+    // background-color: rgba(33, 37, 41, 0.3);
+    z-index: 1; //Ensure it stays above background but below content
+  }
+
+  // Wrapper for main content
+  .contentWrapper {
+    position: relative; // New stacking context
+    z-index: 2; // Ensures it stays above the overlay
+  }
 }

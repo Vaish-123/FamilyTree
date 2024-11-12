@@ -1,0 +1,12 @@
+@import 'style.css';
+@import '../../../../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+.loginClass {
+  .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+}

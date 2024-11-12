@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
-import { CanMatch, GuardResult, MaybeAsync, Route, Router, UrlSegment } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthGuardService implements CanMatch {
+export class AuthGuardService implements CanActivate {
 
-  constructor(private router: Router) { }
-  canMatch(route: Route, segments: UrlSegment[]): MaybeAsync<GuardResult> {
-    return true;
-    // else {
-    //   this.router.navigate(['/access-denied']); // Redirect if unauthorized
-    //   return false; // Deny access
-    // }
+  constructor(private router: Router, private _authService: AuthService) { }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
+    if (this._authService.isAuthenticated()) {
+      return true;
+    }
+    else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 
 }
