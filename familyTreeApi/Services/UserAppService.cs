@@ -21,7 +21,7 @@ namespace familyTreeApi.Services
 
         public async Task<List<UserDto>> GetAllUsers()
         {
-            List<UserDto> result = new();
+            List<UserDto> result = [];
 
             var users = _dbContext.Users;
 

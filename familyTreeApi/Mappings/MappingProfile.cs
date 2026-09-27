@@ -11,6 +11,8 @@ namespace familyTreeApi.Mappings
             // Define your mappings here
             CreateMap<Users, UserDto>().ReverseMap();
             CreateMap<Users, CreateOrEditUserDto>().ReverseMap();
+            CreateMap<UserRelations, UserRelationsDto>().ReverseMap();
+            CreateMap<Relations, RelationsDto>().ReverseMap();
         }
     }
 }

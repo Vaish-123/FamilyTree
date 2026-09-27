@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using familyTreeApi.Data;
 
@@ -11,9 +12,11 @@ using familyTreeApi.Data;
 namespace familyTreeApi.Migrations
 {
     [DbContext(typeof(FamilyTreeDbContext))]
-    partial class FamilyTreeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123101417_Added_Seeding_For_Relations_Table")]
+    partial class Added_Seeding_For_Relations_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,7 +101,7 @@ namespace familyTreeApi.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsApproved")
@@ -113,19 +116,16 @@ namespace familyTreeApi.Migrations
                     b.Property<long?>("ModifiedUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("Order")
+                    b.Property<int>("Order")
                         .HasColumnType("int");
-
-                    b.Property<long?>("RelatedUserId")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("RelationId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("StartDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("UserId")
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
@@ -135,8 +135,6 @@ namespace familyTreeApi.Migrations
                     b.HasIndex("DeletedUserId");
 
                     b.HasIndex("ModifiedUserId");
-
-                    b.HasIndex("RelatedUserId");
 
                     b.HasIndex("RelationId");
 
@@ -234,7 +232,7 @@ namespace familyTreeApi.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationTime = new DateTime(2024, 11, 24, 7, 54, 22, 422, DateTimeKind.Utc).AddTicks(9133),
+                            CreationTime = new DateTime(2024, 11, 23, 10, 14, 15, 406, DateTimeKind.Utc).AddTicks(14),
                             EmailAddress = "admin@gmail.com",
                             HasAdminAccess = true,
                             IsDeleted = false,
@@ -259,11 +257,6 @@ namespace familyTreeApi.Migrations
                         .WithMany()
                         .HasForeignKey("ModifiedUserId");
 
-                    b.HasOne("familyTreeApi.Models.Users", "RelatedUserFk")
-                        .WithMany()
-                        .HasForeignKey("RelatedUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("familyTreeApi.Models.Relations", "RelationFk")
                         .WithMany()
                         .HasForeignKey("RelationId")
@@ -273,15 +266,14 @@ namespace familyTreeApi.Migrations
                     b.HasOne("familyTreeApi.Models.Users", "UserFk")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CreatedUserFk");
 
                     b.Navigation("DeletedUserFk");
 
                     b.Navigation("ModifiedUserFk");
-
-                    b.Navigation("RelatedUserFk");
 
                     b.Navigation("RelationFk");
 

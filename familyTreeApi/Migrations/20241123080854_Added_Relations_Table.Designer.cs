@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using familyTreeApi.Data;
 
@@ -11,9 +12,11 @@ using familyTreeApi.Data;
 namespace familyTreeApi.Migrations
 {
     [DbContext(typeof(FamilyTreeDbContext))]
-    partial class FamilyTreeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123080854_Added_Relations_Table")]
+    partial class Added_Relations_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,103 +49,6 @@ namespace familyTreeApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Relations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            DisplayName = "Father",
-                            IsDeleted = false,
-                            RelationName = "father"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            DisplayName = "Mother",
-                            IsDeleted = false,
-                            RelationName = "mother"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            DisplayName = "Sibling",
-                            IsDeleted = false,
-                            RelationName = "sibling"
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            DisplayName = "Child",
-                            IsDeleted = false,
-                            RelationName = "child"
-                        });
-                });
-
-            modelBuilder.Entity("familyTreeApi.Models.UserRelations", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long?>("CreatedUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("DeletedUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsApproved")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("ModifiedUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int?>("Order")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("RelatedUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("RelationId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("DeletedUserId");
-
-                    b.HasIndex("ModifiedUserId");
-
-                    b.HasIndex("RelatedUserId");
-
-                    b.HasIndex("RelationId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRelations");
                 });
 
             modelBuilder.Entity("familyTreeApi.Models.Users", b =>
@@ -234,7 +140,7 @@ namespace familyTreeApi.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationTime = new DateTime(2024, 11, 24, 7, 54, 22, 422, DateTimeKind.Utc).AddTicks(9133),
+                            CreationTime = new DateTime(2024, 11, 23, 8, 8, 52, 401, DateTimeKind.Utc).AddTicks(5596),
                             EmailAddress = "admin@gmail.com",
                             HasAdminAccess = true,
                             IsDeleted = false,
@@ -243,49 +149,6 @@ namespace familyTreeApi.Migrations
                             Status = "Active",
                             UserName = "admin"
                         });
-                });
-
-            modelBuilder.Entity("familyTreeApi.Models.UserRelations", b =>
-                {
-                    b.HasOne("familyTreeApi.Models.Users", "CreatedUserFk")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("familyTreeApi.Models.Users", "DeletedUserFk")
-                        .WithMany()
-                        .HasForeignKey("DeletedUserId");
-
-                    b.HasOne("familyTreeApi.Models.Users", "ModifiedUserFk")
-                        .WithMany()
-                        .HasForeignKey("ModifiedUserId");
-
-                    b.HasOne("familyTreeApi.Models.Users", "RelatedUserFk")
-                        .WithMany()
-                        .HasForeignKey("RelatedUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("familyTreeApi.Models.Relations", "RelationFk")
-                        .WithMany()
-                        .HasForeignKey("RelationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("familyTreeApi.Models.Users", "UserFk")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("CreatedUserFk");
-
-                    b.Navigation("DeletedUserFk");
-
-                    b.Navigation("ModifiedUserFk");
-
-                    b.Navigation("RelatedUserFk");
-
-                    b.Navigation("RelationFk");
-
-                    b.Navigation("UserFk");
                 });
 
             modelBuilder.Entity("familyTreeApi.Models.Users", b =>

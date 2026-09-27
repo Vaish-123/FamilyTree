@@ -30,6 +30,7 @@ builder.Services.AddDbContext<FamilyTreeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUserAppService, UserAppService>();
+builder.Services.AddScoped<IUserRelationsAppService, UserRelationsAppService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());        // Register AutoMapper
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -59,6 +60,13 @@ builder.Services.AddAuthentication(options =>
 });
 
 var app = builder.Build();
+
+///Use this for evoking the DatabaseSeeder while running the application.
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider.GetRequiredService<FamilyTreeDbContext>();
+//    DatabaseSeeder.SeedData(dbContext); // Trigger seeding
+//}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

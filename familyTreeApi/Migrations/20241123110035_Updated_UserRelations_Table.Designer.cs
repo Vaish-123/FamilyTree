@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using familyTreeApi.Data;
 
@@ -11,9 +12,11 @@ using familyTreeApi.Data;
 namespace familyTreeApi.Migrations
 {
     [DbContext(typeof(FamilyTreeDbContext))]
-    partial class FamilyTreeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123110035_Updated_UserRelations_Table")]
+    partial class Updated_UserRelations_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,7 +101,7 @@ namespace familyTreeApi.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsApproved")
@@ -113,7 +116,7 @@ namespace familyTreeApi.Migrations
                     b.Property<long?>("ModifiedUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("Order")
+                    b.Property<int>("Order")
                         .HasColumnType("int");
 
                     b.Property<long?>("RelatedUserId")
@@ -122,7 +125,7 @@ namespace familyTreeApi.Migrations
                     b.Property<long>("RelationId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime?>("StartDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("UserId")
@@ -234,7 +237,7 @@ namespace familyTreeApi.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationTime = new DateTime(2024, 11, 24, 7, 54, 22, 422, DateTimeKind.Utc).AddTicks(9133),
+                            CreationTime = new DateTime(2024, 11, 23, 11, 0, 35, 130, DateTimeKind.Utc).AddTicks(1072),
                             EmailAddress = "admin@gmail.com",
                             HasAdminAccess = true,
                             IsDeleted = false,
