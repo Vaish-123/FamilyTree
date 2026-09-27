@@ -113,7 +113,6 @@ export class UtilsServiceComponent {
     return isValid;
   }
 
-
   /**
    * Compare two arrays.
    *

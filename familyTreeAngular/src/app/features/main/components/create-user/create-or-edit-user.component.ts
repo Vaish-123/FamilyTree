@@ -11,8 +11,6 @@ import { AppComponentBase } from '../../../../shared/app-component-base';
 })
 export class CreateOrEditUserComponent extends AppComponentBase implements OnInit {
 
-  maxDate = new Date().toISOString().slice(0, 16);
-
   constructor(
     injector: Injector,
     private _userService: UserService,

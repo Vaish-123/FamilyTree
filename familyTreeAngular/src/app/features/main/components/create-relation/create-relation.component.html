@@ -1,0 +1,69 @@
+<div class="createRelationClass">
+  <div class="card">
+    <div class="card-header">
+      <!-- <span>{{ UserForm.get('id').value ? 'Update' : 'Create' }}</span> User -->
+      <span>Create Relation</span>
+    </div>
+    <div class="card-body">
+      <form>
+        <fieldset [formGroup]="CreateRelationForm">
+          <div class="mb-3">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input type="date" [max]="today" format formControlName="startDate" class="form-control" id="startDate">
+          </div>
+          <div class="mb-3">
+            <label for="endDate" class="form-label">End Date</label>
+            <input type="date" [max]="today" format formControlName="endDate" class="form-control" id="endDate">
+          </div>
+          <div class="row">
+            <label for="gender" class="mb-2">Relate users</label><br>
+            <div class="col-6">
+              <div class="input-group">
+                <select class="form-select" formControlName="userId" aria-label="Relationship Status">
+                  <option value="" selected>Select User</option>
+                  <option *ngFor="let status of allUsers" [value]="status.id">
+                    {{ status.name }}
+                  </option>
+                </select>
+                <label class="input-group-text" for="inputGroupSelect01">Primary User</label>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group">
+                <select class="form-select" formControlName="relatedUserId" aria-label="Relationship Status">
+                  <option value="" selected>Select User</option>
+                  <option *ngFor="let status of allUsers" [value]="status.id">
+                    {{ status.name }}
+                  </option>
+                </select>
+                <label class="input-group-text" for="inputGroupSelect02">Related User</label>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="input-group">
+                <select class="form-select" formControlName="relationId" aria-label="Relationship Status">
+                  <option value="" selected>Select Relationship Type</option>
+                  <option *ngFor="let status of relations" [value]="status.id">
+                    {{ status.displayName }}
+                  </option>
+                </select>
+                <label class="input-group-text" for="inputGroupSelect02">Related User</label>
+              </div>
+            </div>
+
+            <div class="text-danger" *ngIf="validateBothUsers()">
+              <small>Primary and Related users cannot be the same.</small>
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
+    <div class="card-footer text-muted d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary" (click)="submitRelation()"
+        [disabled]="!CreateRelationForm.valid || validateBothUsers()">Submit Relation</button>
+    </div>
+  </div>
+</div>

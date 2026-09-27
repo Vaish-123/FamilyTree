@@ -14,6 +14,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AdminModule } from './features/admin/admin.module';
 import { AccountModule } from './features/account/account.module';
 import { AuthIntercerptor } from './core/interceptors/auth-interceptor.service';
+import { UserRelationService } from './core/services/userRelation.service';
 
 
 @NgModule({
@@ -32,7 +33,9 @@ import { AuthIntercerptor } from './core/interceptors/auth-interceptor.service';
     NgxSpinnerModule.forRoot(),
   ],
   providers: [
+    //TODO: Add module for services and register the module here.
     UserService,
+    UserRelationService,
     provideHttpClient(
       withInterceptorsFromDi() // This enables DI to load interceptors automatically
     ),

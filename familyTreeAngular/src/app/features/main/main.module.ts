@@ -6,16 +6,18 @@ import { SharedModule } from "../../shared/shared.module";
 import { PrimaryRelationsComponent } from "./components/primary-relations/primary-relations.component";
 import { CreateOrEditUserComponent } from "./components/create-user/create-or-edit-user.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbDatepickerModule, NgbDropdownModule } from "@ng-bootstrap/ng-bootstrap";
 import { UtilsServiceComponent } from "../../shared/utils/utils.service";
 import { CommonModule } from "@angular/common";
+import { CreateRelationComponent } from "./components/create-relation/create-relation.component";
 
 @NgModule({
   declarations: [
     HomeComponent,
     UserProfileComponent,
     PrimaryRelationsComponent,
-    CreateOrEditUserComponent
+    CreateOrEditUserComponent,
+    CreateRelationComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { CommonModule } from "@angular/common";
     SharedModule,
     ReactiveFormsModule,
     NgbDatepickerModule,
+    NgbDropdownModule,
     FormsModule
   ],
   providers: [UtilsServiceComponent],

@@ -13,7 +13,9 @@ export abstract class AppComponentBase {
   spinnerService: NgxSpinnerService;
   alertService: AlertService;
   sharedService: SharedService;
-  utilsServiceComponent: UtilsServiceComponent
+  utilsServiceComponent: UtilsServiceComponent;
+
+  today = new Date().toISOString().slice(0, 16);
 
   constructor(injector: Injector) {
     this.alertService = injector.get(AlertService);
