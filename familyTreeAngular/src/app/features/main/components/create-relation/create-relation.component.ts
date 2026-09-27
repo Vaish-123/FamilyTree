@@ -64,7 +64,7 @@ export class CreateRelationComponent extends AppComponentBase implements OnInit 
   }
 
   validateBothUsers() {
-    var validatedValue = this.CreateRelationForm.get('userId').value == this.CreateRelationForm.get('relatedUserId').value && this.CreateRelationForm.get('userId').value && this.CreateRelationForm.get('relatedUserId').value;
+    var validatedValue = this.CreateRelationForm.get('userId')?.value == this.CreateRelationForm.get('relatedUserId')?.value && this.CreateRelationForm.get('userId')?.value && this.CreateRelationForm.get('relatedUserId')?.value;
     return validatedValue || false;
   }
 

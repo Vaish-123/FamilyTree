@@ -247,8 +247,8 @@ export class UtilsServiceComponent {
             continue;
           }
 
-          let value1 = obj1[key];
-          let value2 = obj2[key];
+          let value1 = (obj1 as any)[key];
+          let value2 = (obj2 as any)[key];
 
           // Skip if any value is undefined
           if (value1 === undefined && value2 === undefined) {

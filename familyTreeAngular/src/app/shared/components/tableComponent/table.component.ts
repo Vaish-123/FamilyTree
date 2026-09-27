@@ -10,14 +10,13 @@ import { BehaviorSubject } from 'rxjs';
     standalone: false
 })
 
-export class TableComponent<T> implements OnInit {
-
+export class TableComponent<T extends Record<string, any>> implements OnInit {
   @Input() data: T[] = []; // Input data array
   @Input() columns: { key: string; label: string, width: string }[] = []; // Column configuration
   private initialData: T[] = []; // Store initial data state
   private sortState: 'asc' | 'desc' | 'reset' = 'reset';
 
-  @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
+  @ViewChildren(SortableDirective) headers?: QueryList<SortableDirective>;
 
   searchTerm: string = '';
   sortColumn: string = '';
@@ -43,7 +42,7 @@ export class TableComponent<T> implements OnInit {
 
   onSort({ column }: SortEvent) {
     // Reset the other headers
-    this.headers.forEach(header => {
+    this.headers?.forEach(header => {
       if (header.sortable !== column) {
         header.direction = '';
       }
@@ -82,7 +81,7 @@ export class TableComponent<T> implements OnInit {
     // Search functionality
     if (this.searchTerm) {
       const term = this.searchTerm.toLowerCase();
-      filteredData = filteredData.filter(item =>
+      filteredData = filteredData.filter((item: any) =>
         Object.values(item).some(value =>
           String(value).toLowerCase().includes(term)
         )
@@ -92,7 +91,7 @@ export class TableComponent<T> implements OnInit {
     // Sorting functionality
     if (this.sortState !== 'reset' && this.sortColumn && this.sortDirection) {
       filteredData = filteredData.sort((a, b) => {
-        const res = a[this.sortColumn] < b[this.sortColumn] ? -1 : 1;
+        const res = (a as any)[this.sortColumn] < (b as any)[this.sortColumn] ? -1 : 1;
         return this.sortDirection === 'asc' ? res : -res;
       });
     }
@@ -105,7 +104,7 @@ export class TableComponent<T> implements OnInit {
   }
 
   exportToCSV() {
-    const rows = [this.columns.map(col => col.label), ...this.data.map(item => this.columns.map(col => item[col.key]))];
+    const rows = [this.columns.map(col => col.label), ...this.data.map((item: any) => this.columns.map(col => item[col.key]))];
     const csvContent = rows.map(row => row.join(",")).join("\n");
 
     const blob = new Blob([csvContent], { type: 'text/csv' });
