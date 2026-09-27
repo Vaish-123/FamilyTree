@@ -8,7 +8,7 @@ import { MainModule } from './features/main/main.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './core/services/user.service';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AdminModule } from './features/admin/admin.module';
@@ -36,7 +36,7 @@ import { UserRelationService } from './core/services/userRelation.service';
     //TODO: Add module for services and register the module here.
     UserService,
     UserRelationService,
-    provideHttpClient(
+    provideHttpClient(withXhr(), 
       withInterceptorsFromDi() // This enables DI to load interceptors automatically
     ),
     { provide: HTTP_INTERCEPTORS, useClass: AuthIntercerptor, multi: true }

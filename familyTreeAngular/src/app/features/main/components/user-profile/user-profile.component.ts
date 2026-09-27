@@ -1,10 +1,11 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 
 @Component({
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
     styleUrl: './user-profile.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

@@ -1,4 +1,4 @@
-import { Component, Injector, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { AppComponentBase } from '../../../shared/app-component-base';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss',
     encapsulation: ViewEncapsulation.ShadowDom,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

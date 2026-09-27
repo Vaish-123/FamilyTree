@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';
 import { SortableDirective, SortEvent } from './sortable.directive';
 import { BehaviorSubject } from 'rxjs';
 
@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
     selector: 'app-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

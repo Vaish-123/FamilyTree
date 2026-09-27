@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SharedService } from '../../shared/sharedService.service';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { AppComponentBase } from '../../shared/app-component-base';
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

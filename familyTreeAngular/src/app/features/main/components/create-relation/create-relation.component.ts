@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserDto } from '../../../../core/models/userDto';
@@ -11,6 +11,7 @@ import { RelationsDto } from '../../../../core/models/relationsDto';
     selector: 'app-create-relation',
     templateUrl: './create-relation.component.html',
     styleUrl: './create-relation.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CreateRelationComponent extends AppComponentBase implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 import { UserService } from '../../../../core/services/user.service';
 import { UserDto } from '../../../../core/models/userDto';
@@ -7,6 +7,7 @@ import { UserDto } from '../../../../core/models/userDto';
     selector: 'app-users',
     templateUrl: './users.component.html',
     styleUrl: './users.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

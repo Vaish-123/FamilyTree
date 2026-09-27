@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 export interface FamilyMember {
   id: number;            // Unique identifier for the family member
@@ -16,6 +16,7 @@ export interface FamilyMember {
     selector: 'app-family-tree',
     templateUrl: './family-tree.component.html',
     styleUrl: './family-tree.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FamilyTreeComponent implements OnInit {

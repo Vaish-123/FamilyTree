@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../core/services/user.service';
 import { UserDto } from '../../../../core/models/userDto';
@@ -8,6 +8,7 @@ import { AppComponentBase } from '../../../../shared/app-component-base';
     selector: 'app-create-or-edit-user',
     templateUrl: './create-or-edit-user.component.html',
     styleUrl: './create-or-edit-user.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CreateOrEditUserComponent extends AppComponentBase implements OnInit {
