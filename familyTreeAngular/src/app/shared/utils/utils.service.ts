@@ -11,7 +11,8 @@ interface DateTimeOptions {
 }
 
 @Component({
-  template: ''
+    template: '',
+    standalone: false
 })
 
 /**

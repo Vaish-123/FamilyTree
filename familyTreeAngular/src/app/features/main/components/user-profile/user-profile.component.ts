@@ -2,9 +2,10 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.scss'
+    selector: 'app-user-profile',
+    templateUrl: './user-profile.component.html',
+    styleUrl: './user-profile.component.scss',
+    standalone: false
 })
 
 export class UserProfileComponent extends AppComponentBase implements OnInit {

@@ -5,9 +5,10 @@ import { UserDto } from '../../../../core/models/userDto';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 
 @Component({
-  selector: 'app-create-or-edit-user',
-  templateUrl: './create-or-edit-user.component.html',
-  styleUrl: './create-or-edit-user.component.scss'
+    selector: 'app-create-or-edit-user',
+    templateUrl: './create-or-edit-user.component.html',
+    styleUrl: './create-or-edit-user.component.scss',
+    standalone: false
 })
 export class CreateOrEditUserComponent extends AppComponentBase implements OnInit {
 

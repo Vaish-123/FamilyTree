@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 import { AppComponentBase } from '../../shared/app-component-base';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
+    standalone: false
 })
 
 export class HeaderComponent extends AppComponentBase implements OnInit {

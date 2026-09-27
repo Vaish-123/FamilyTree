@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FamilyMember } from '../../../../shared/components/family-tree/family-tree.component';
 
 @Component({
-  selector: 'app-primary-relations',
-  templateUrl: './primary-relations.component.html',
-  styleUrl: './primary-relations.component.scss'
+    selector: 'app-primary-relations',
+    templateUrl: './primary-relations.component.html',
+    styleUrl: './primary-relations.component.scss',
+    standalone: false
 })
 export class PrimaryRelationsComponent {
   familyTreeArray: FamilyMember[] = [

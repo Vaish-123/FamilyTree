@@ -4,10 +4,11 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
-  encapsulation: ViewEncapsulation.ShadowDom
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss',
+    encapsulation: ViewEncapsulation.ShadowDom,
+    standalone: false
 })
 
 export class LoginComponent extends AppComponentBase {

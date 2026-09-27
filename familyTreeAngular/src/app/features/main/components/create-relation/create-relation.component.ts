@@ -8,9 +8,10 @@ import { UserRelationsDto } from '../../../../core/models/userRelationsDto';
 import { RelationsDto } from '../../../../core/models/relationsDto';
 
 @Component({
-  selector: 'app-create-relation',
-  templateUrl: './create-relation.component.html',
-  styleUrl: './create-relation.component.scss'
+    selector: 'app-create-relation',
+    templateUrl: './create-relation.component.html',
+    styleUrl: './create-relation.component.scss',
+    standalone: false
 })
 export class CreateRelationComponent extends AppComponentBase implements OnInit {
 

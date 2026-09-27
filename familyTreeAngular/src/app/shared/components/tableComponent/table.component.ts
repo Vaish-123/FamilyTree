@@ -3,9 +3,10 @@ import { SortableDirective, SortEvent } from './sortable.directive';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+    selector: 'app-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss'],
+    standalone: false
 })
 
 export class TableComponent<T> implements OnInit {

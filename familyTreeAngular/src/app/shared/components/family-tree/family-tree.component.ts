@@ -13,9 +13,10 @@ export interface FamilyMember {
 }
 
 @Component({
-  selector: 'app-family-tree',
-  templateUrl: './family-tree.component.html',
-  styleUrl: './family-tree.component.scss'
+    selector: 'app-family-tree',
+    templateUrl: './family-tree.component.html',
+    styleUrl: './family-tree.component.scss',
+    standalone: false
 })
 export class FamilyTreeComponent implements OnInit {
   @Input() familyTreeArray: FamilyMember[] = [];

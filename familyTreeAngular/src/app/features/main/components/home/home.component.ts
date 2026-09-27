@@ -2,9 +2,10 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    standalone: false
 })
 
 export class HomeComponent extends AppComponentBase implements OnInit {

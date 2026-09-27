@@ -4,9 +4,10 @@ import { UserService } from '../../../../core/services/user.service';
 import { UserDto } from '../../../../core/models/userDto';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.scss'
+    selector: 'app-users',
+    templateUrl: './users.component.html',
+    styleUrl: './users.component.scss',
+    standalone: false
 })
 
 export class UsersComponent extends AppComponentBase implements OnInit {
