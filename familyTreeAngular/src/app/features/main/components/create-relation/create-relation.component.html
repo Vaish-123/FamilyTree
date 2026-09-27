@@ -21,9 +21,11 @@
               <div class="input-group">
                 <select class="form-select" formControlName="userId" aria-label="Relationship Status">
                   <option value="" selected>Select User</option>
-                  <option *ngFor="let status of allUsers" [value]="status.id">
-                    {{ status.name }}
-                  </option>
+                  @for (status of allUsers; track status) {
+                    <option [value]="status.id">
+                      {{ status.name }}
+                    </option>
+                  }
                 </select>
                 <label class="input-group-text" for="inputGroupSelect01">Primary User</label>
               </div>
@@ -33,9 +35,11 @@
               <div class="input-group">
                 <select class="form-select" formControlName="relatedUserId" aria-label="Relationship Status">
                   <option value="" selected>Select User</option>
-                  <option *ngFor="let status of allUsers" [value]="status.id">
-                    {{ status.name }}
-                  </option>
+                  @for (status of allUsers; track status) {
+                    <option [value]="status.id">
+                      {{ status.name }}
+                    </option>
+                  }
                 </select>
                 <label class="input-group-text" for="inputGroupSelect02">Related User</label>
               </div>
@@ -45,17 +49,21 @@
               <div class="input-group">
                 <select class="form-select" formControlName="relationId" aria-label="Relationship Status">
                   <option value="" selected>Select Relationship Type</option>
-                  <option *ngFor="let status of relations" [value]="status.id">
-                    {{ status.displayName }}
-                  </option>
+                  @for (status of relations; track status) {
+                    <option [value]="status.id">
+                      {{ status.displayName }}
+                    </option>
+                  }
                 </select>
                 <label class="input-group-text" for="inputGroupSelect02">Related User</label>
               </div>
             </div>
 
-            <div class="text-danger" *ngIf="validateBothUsers()">
-              <small>Primary and Related users cannot be the same.</small>
-            </div>
+            @if (validateBothUsers()) {
+              <div class="text-danger">
+                <small>Primary and Related users cannot be the same.</small>
+              </div>
+            }
           </div>
 
         </fieldset>
@@ -63,7 +71,7 @@
     </div>
     <div class="card-footer text-muted d-flex justify-content-center">
       <button type="submit" class="btn btn-primary" (click)="submitRelation()"
-        [disabled]="!CreateRelationForm.valid || validateBothUsers()">Submit Relation</button>
+      [disabled]="!CreateRelationForm.valid || validateBothUsers()">Submit Relation</button>
     </div>
   </div>
 </div>

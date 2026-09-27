@@ -1,3 +1,5 @@
-<div class="usersClass" *ngIf="isActive">
-  <app-table [data]="AllUsers" [columns]="columnsToDisplay"></app-table>
-</div>
+@if (isActive) {
+  <div class="usersClass">
+    <app-table [data]="AllUsers" [columns]="columnsToDisplay"></app-table>
+  </div>
+}
